@@ -1,0 +1,1332 @@
+Microsoft Windows [Versión 10.0.18362.836]
+(c) 2019 Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\melendez>cd C:\Users\melendez\anaconda3
+
+C:\Users\melendez\anaconda3>conda activate base
+
+(base) C:\Users\melendez\anaconda3>cd Scripts
+
+(base) C:\Users\melendez\anaconda3\Scripts>ipython
+Python 3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.12.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import pandas as pd
+
+In [2]: import numpy as np
+
+In [3]: # PANDAS =========================================================
+
+In [4]: sdata = {'Ohio': 35000, 'Texas':71000, 'Oregon':16000, 'Utah': 5000}
+
+In [5]: obj3 = pd.Series(sdata)
+
+In [6]: obj3
+Out[6]:
+Ohio      35000
+Texas     71000
+Oregon    16000
+Utah       5000
+dtype: int64
+
+In [7]: obj = pd.Series([4,7,-5,3])
+
+In [8]: obj
+Out[8]:
+0    4
+1    7
+2   -5
+3    3
+dtype: int64
+
+In [9]: obj2 = pd.Series([4,7,-5,3], series = ['d', 'b', 'a', 'c'])
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-9-2270970a5976> in <module>
+----> 1 obj2 = pd.Series([4,7,-5,3], series = ['d', 'b', 'a', 'c'])
+
+TypeError: __init__() got an unexpected keyword argument 'series'
+
+In [10]: obj2 = pd.Series([4,7,-5,3], index = ['d', 'b', 'a', 'c'])
+
+In [11]: obj2
+Out[11]:
+d    4
+b    7
+a   -5
+c    3
+dtype: int64
+
+In [12]: states =['California' , 'Ohio', 'Oregon', 'Texas']
+
+In [13]: Obj4 = pd.Series(sdata, index = states)
+
+In [14]: obj4
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-14-8adf5c04872c> in <module>
+----> 1 obj4
+
+NameError: name 'obj4' is not defined
+
+In [15]: obj4 = pd.Series(sdata, index = states)
+
+In [16]: obj4
+Out[16]:
+California        NaN
+Ohio          35000.0
+Oregon        16000.0
+Texas         71000.0
+dtype: float64
+
+In [17]: pd.isnull(obj4)
+Out[17]:
+California     True
+Ohio          False
+Oregon        False
+Texas         False
+dtype: bool
+
+In [18]: pd.notnull(obj4)
+Out[18]:
+California    False
+Ohio           True
+Oregon         True
+Texas          True
+dtype: bool
+
+In [19]: obj4.isnull()
+Out[19]:
+California     True
+Ohio          False
+Oregon        False
+Texas         False
+dtype: bool
+
+In [20]: obj4.notnull()
+Out[20]:
+California    False
+Ohio           True
+Oregon         True
+Texas          True
+dtype: bool
+
+In [21]: obj3
+Out[21]:
+Ohio      35000
+Texas     71000
+Oregon    16000
+Utah       5000
+dtype: int64
+
+In [22]: obj4
+Out[22]:
+California        NaN
+Ohio          35000.0
+Oregon        16000.0
+Texas         71000.0
+dtype: float64
+
+In [23]: obj3 + obj4
+Out[23]:
+California         NaN
+Ohio           70000.0
+Oregon         32000.0
+Texas         142000.0
+Utah               NaN
+dtype: float64
+
+In [24]: obj4.name = 'population'
+
+In [25]: obj4.index.name = 'state'
+
+In [26]: obj4
+Out[26]:
+state
+California        NaN
+Ohio          35000.0
+Oregon        16000.0
+Texas         71000.0
+Name: population, dtype: float64
+
+In [27]: obj
+Out[27]:
+0    4
+1    7
+2   -5
+3    3
+dtype: int64
+
+In [28]: obj.index = ['Bob', 'Steve', 'Jeff', 'Ryan']
+
+In [29]: obj
+Out[29]:
+Bob      4
+Steve    7
+Jeff    -5
+Ryan     3
+dtype: int64
+
+In [30]: # DataFrame =============================================================
+
+In [31]: data = {'state':['Ohio','Ohio','Ohio','Nevada','Nevada','Nevada'],'year':[2000,2001,2002,2001,2002,2003],'pop'
+    ...: :[1.5, 1.7, 3.6, 2.4, 2.9, 3.2]}
+
+In [32]: frame = pd.DataFrame(data)
+
+In [33]: frame
+Out[33]:
+    state  year  pop
+0    Ohio  2000  1.5
+1    Ohio  2001  1.7
+2    Ohio  2002  3.6
+3  Nevada  2001  2.4
+4  Nevada  2002  2.9
+5  Nevada  2003  3.2
+
+In [34]: frame.head()
+Out[34]:
+    state  year  pop
+0    Ohio  2000  1.5
+1    Ohio  2001  1.7
+2    Ohio  2002  3.6
+3  Nevada  2001  2.4
+4  Nevada  2002  2.9
+
+In [35]: pd.DataFrame(data, columns = ['year','state','pop'])
+Out[35]:
+   year   state  pop
+0  2000    Ohio  1.5
+1  2001    Ohio  1.7
+2  2002    Ohio  3.6
+3  2001  Nevada  2.4
+4  2002  Nevada  2.9
+5  2003  Nevada  3.2
+
+In [36]: frame2 = pd.DataFrame(data, columns = ['year','state','pop','debt'],index=['one','two','three','four','five','
+    ...: six'])
+
+In [37]: frame2
+Out[37]:
+       year   state  pop debt
+one    2000    Ohio  1.5  NaN
+two    2001    Ohio  1.7  NaN
+three  2002    Ohio  3.6  NaN
+four   2001  Nevada  2.4  NaN
+five   2002  Nevada  2.9  NaN
+six    2003  Nevada  3.2  NaN
+
+In [38]: frame2.columns
+Out[38]: Index(['year', 'state', 'pop', 'debt'], dtype='object')
+
+In [39]: frame2['state']
+Out[39]:
+one        Ohio
+two        Ohio
+three      Ohio
+four     Nevada
+five     Nevada
+six      Nevada
+Name: state, dtype: object
+
+In [40]: frame2.year
+Out[40]:
+one      2000
+two      2001
+three    2002
+four     2001
+five     2002
+six      2003
+Name: year, dtype: int64
+
+In [41]: frame2.loc['three']
+Out[41]:
+year     2002
+state    Ohio
+pop       3.6
+debt      NaN
+Name: three, dtype: object
+
+In [42]: frame2['debt']=16.5
+
+In [43]: frame2
+Out[43]:
+       year   state  pop  debt
+one    2000    Ohio  1.5  16.5
+two    2001    Ohio  1.7  16.5
+three  2002    Ohio  3.6  16.5
+four   2001  Nevada  2.4  16.5
+five   2002  Nevada  2.9  16.5
+six    2003  Nevada  3.2  16.5
+
+In [44]: frame2['debt'] = np.arange(6.)
+
+In [45]: frame2
+Out[45]:
+       year   state  pop  debt
+one    2000    Ohio  1.5   0.0
+two    2001    Ohio  1.7   1.0
+three  2002    Ohio  3.6   2.0
+four   2001  Nevada  2.4   3.0
+five   2002  Nevada  2.9   4.0
+six    2003  Nevada  3.2   5.0
+
+In [46]: val = pd.Series([-1.2, -1.5, -1.7], index=['two', 'four', 'five'])
+
+In [47]: frame2['debt'] = val
+
+In [48]: frame2
+Out[48]:
+       year   state  pop  debt
+one    2000    Ohio  1.5   NaN
+two    2001    Ohio  1.7  -1.2
+three  2002    Ohio  3.6   NaN
+four   2001  Nevada  2.4  -1.5
+five   2002  Nevada  2.9  -1.7
+six    2003  Nevada  3.2   NaN
+
+In [49]: frame2['eastern'] = frame2.state == 'Ohio'
+
+In [50]: frame2
+Out[50]:
+       year   state  pop  debt  eastern
+one    2000    Ohio  1.5   NaN     True
+two    2001    Ohio  1.7  -1.2     True
+three  2002    Ohio  3.6   NaN     True
+four   2001  Nevada  2.4  -1.5    False
+five   2002  Nevada  2.9  -1.7    False
+six    2003  Nevada  3.2   NaN    False
+
+In [51]: del frame2['eastern']
+
+In [52]: frame2.columns
+Out[52]: Index(['year', 'state', 'pop', 'debt'], dtype='object')
+
+In [53]: pop = {'Nevada':{2001:2.4,2002:2.9},'Ohio':{2000:1.5, 2001:1.7, 2002:3.6}}
+
+In [54]: frame3 = pd.DataFrame(pop)
+
+In [55]: frame3
+Out[55]:
+      Nevada  Ohio
+2001     2.4   1.7
+2002     2.9   3.6
+2000     NaN   1.5
+
+In [56]: frame3.T
+Out[56]:
+        2001  2002  2000
+Nevada   2.4   2.9   NaN
+Ohio     1.7   3.6   1.5
+
+In [57]: pd.DataFrame(pop,index=[2001,2002,2003])
+Out[57]:
+      Nevada  Ohio
+2001     2.4   1.7
+2002     2.9   3.6
+2003     NaN   NaN
+
+In [58]: pdata = {'Ohio':frame3['Ohio'][:-1],'Nevada':frame3['Nevada'][:2]}
+
+In [59]: pdata
+Out[59]:
+{'Ohio': 2001    1.7
+ 2002    3.6
+ Name: Ohio, dtype: float64,
+ 'Nevada': 2001    2.4
+ 2002    2.9
+ Name: Nevada, dtype: float64}
+
+In [60]: pd.DataFrame(pdata)
+Out[60]:
+      Ohio  Nevada
+2001   1.7     2.4
+2002   3.6     2.9
+
+In [61]: frame3.index.name = 'year'; frame3.columns.name = 'state'
+
+In [62]: frame3
+Out[62]:
+state  Nevada  Ohio
+year
+2001      2.4   1.7
+2002      2.9   3.6
+2000      NaN   1.5
+
+In [63]: frame3.values
+Out[63]:
+array([[2.4, 1.7],
+       [2.9, 3.6],
+       [nan, 1.5]])
+
+In [64]: frame2
+Out[64]:
+       year   state  pop  debt
+one    2000    Ohio  1.5   NaN
+two    2001    Ohio  1.7  -1.2
+three  2002    Ohio  3.6   NaN
+four   2001  Nevada  2.4  -1.5
+five   2002  Nevada  2.9  -1.7
+six    2003  Nevada  3.2   NaN
+
+In [65]: frame2.values
+Out[65]:
+array([[2000, 'Ohio', 1.5, nan],
+       [2001, 'Ohio', 1.7, -1.2],
+       [2002, 'Ohio', 3.6, nan],
+       [2001, 'Nevada', 2.4, -1.5],
+       [2002, 'Nevada', 2.9, -1.7],
+       [2003, 'Nevada', 3.2, nan]], dtype=object)
+
+In [66]: obj = pd.Series(range(3), index=['a','b','c'])
+
+In [67]: obj
+Out[67]:
+a    0
+b    1
+c    2
+dtype: int64
+
+In [68]: index = obj.index
+
+In [69]: index
+Out[69]: Index(['a', 'b', 'c'], dtype='object')
+
+In [70]: index[1:]
+Out[70]: Index(['b', 'c'], dtype='object')
+
+In [71]: index[1] = 'd'  #TypeError
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-71-4f2e51bf9ef9> in <module>
+----> 1 index[1] = 'd'  #TypeError
+
+~\anaconda3\lib\site-packages\pandas\core\indexes\base.py in __setitem__(self, key, value)
+   3908
+   3909     def __setitem__(self, key, value):
+-> 3910         raise TypeError("Index does not support mutable operations")
+   3911
+   3912     def __getitem__(self, key):
+
+TypeError: Index does not support mutable operations
+
+In [72]: labels = pd.Index(np.arange(3))
+
+In [73]: labels
+Out[73]: Int64Index([0, 1, 2], dtype='int64')
+
+In [74]: obj2 = pd.Series([1.5, -2.5, 0], index=labels)
+
+In [75]: obj2
+Out[75]:
+0    1.5
+1   -2.5
+2    0.0
+dtype: float64
+
+In [76]: obj2.index is labels
+Out[76]: True
+
+In [77]: frame3
+Out[77]:
+state  Nevada  Ohio
+year
+2001      2.4   1.7
+2002      2.9   3.6
+2000      NaN   1.5
+
+In [78]: frame3.columns
+Out[78]: Index(['Nevada', 'Ohio'], dtype='object', name='state')
+
+In [79]: 'Ohio' in frame3.columns
+Out[79]: True
+
+In [80]: 2003 in frame3.index
+Out[80]: False
+
+In [81]: dup_labels = pd.Index(['foo','foo','bar','bar'])
+
+In [82]: dup_labels
+Out[82]: Index(['foo', 'foo', 'bar', 'bar'], dtype='object')
+
+In [83]: # ESSENTIAL FUNCTIONALITY =========================================================
+
+In [84]: obj = pd.Series([4.5, 7.2,-5.3, 3.6], index=['d','b','a','c'])
+
+In [85]: obj
+Out[85]:
+d    4.5
+b    7.2
+a   -5.3
+c    3.6
+dtype: float64
+
+In [86]: obj2 = obj.reindex(['a','b','c','d','e'])
+
+In [87]: obj2
+Out[87]:
+a   -5.3
+b    7.2
+c    3.6
+d    4.5
+e    NaN
+dtype: float64
+
+In [88]: obj3 = pd.Series(['blue','purple','yellow'],index=[0,2,4])
+
+In [89]: obj3
+Out[89]:
+0      blue
+2    purple
+4    yellow
+dtype: object
+
+In [90]: obj3.reindex(range(6),method='ffill')
+Out[90]:
+0      blue
+1      blue
+2    purple
+3    purple
+4    yellow
+5    yellow
+dtype: object
+
+In [91]: frame = pd.DataFrame(np.arange(9).reshape((3,3)), index=['a','c','d'],columns=['Ohio','Texas','California'])
+
+In [92]: frame
+Out[92]:
+   Ohio  Texas  California
+a     0      1           2
+c     3      4           5
+d     6      7           8
+
+In [93]: frame2 = frame.reindex(['a','b','c','d'])
+
+In [94]: frame 2
+  File "<ipython-input-94-29ec598485d0>", line 1
+    frame 2
+          ^
+SyntaxError: invalid syntax
+
+
+In [95]: frame2
+Out[95]:
+   Ohio  Texas  California
+a   0.0    1.0         2.0
+b   NaN    NaN         NaN
+c   3.0    4.0         5.0
+d   6.0    7.0         8.0
+
+In [96]: states = ['Texas', 'Utah','California']
+
+In [97]: frame
+Out[97]:
+   Ohio  Texas  California
+a     0      1           2
+c     3      4           5
+d     6      7           8
+
+In [98]: frame.reindex(columns = states)
+Out[98]:
+   Texas  Utah  California
+a      1   NaN           2
+c      4   NaN           5
+d      7   NaN           8
+
+In [99]: # AXIS =====================================================================
+
+In [100]: obj = pd.Series(np.arange(5.), index=['a','b','c','d','e'])
+
+In [101]: obj
+Out[101]:
+a    0.0
+b    1.0
+c    2.0
+d    3.0
+e    4.0
+dtype: float64
+
+In [102]: new_obj = obj.drop('c')
+
+In [103]: new_obj
+Out[103]:
+a    0.0
+b    1.0
+d    3.0
+e    4.0
+dtype: float64
+
+In [104]: obj.drop(['d','c'])
+Out[104]:
+a    0.0
+b    1.0
+e    4.0
+dtype: float64
+
+In [105]: data = pd.DataFrame(np.arange(16).reshape((4,4)), index=['Ohio', 'Colorado', 'Utah', 'New York'], columns = [
+     ...: 'one', 'two','three','four'])
+
+In [106]: data
+Out[106]:
+          one  two  three  four
+Ohio        0    1      2     3
+Colorado    4    5      6     7
+Utah        8    9     10    11
+New York   12   13     14    15
+
+In [107]: # axis 0 by default drop by index in DataFrame
+
+In [108]: data.drop(['Colorado', 'Ohio'])
+Out[108]:
+          one  two  three  four
+Utah        8    9     10    11
+New York   12   13     14    15
+
+In [109]: # axis = 1 for drop by column
+
+In [110]: data.drop('two', axis = 1)
+Out[110]:
+          one  three  four
+Ohio        0      2     3
+Colorado    4      6     7
+Utah        8     10    11
+New York   12     14    15
+
+In [111]: data
+Out[111]:
+          one  two  three  four
+Ohio        0    1      2     3
+Colorado    4    5      6     7
+Utah        8    9     10    11
+New York   12   13     14    15
+
+In [112]: data.drop(['two','four'], axis = 'columns')
+Out[112]:
+          one  three
+Ohio        0      2
+Colorado    4      6
+Utah        8     10
+New York   12     14
+
+In [113]: obj
+Out[113]:
+a    0.0
+b    1.0
+c    2.0
+d    3.0
+e    4.0
+dtype: float64
+
+In [114]: obj.drop('c', inplace=True)
+
+In [115]: obj
+Out[115]:
+a    0.0
+b    1.0
+d    3.0
+e    4.0
+dtype: float64
+
+In [116]: # Indexing, Selection and Filtering =================================================
+
+In [117]: obj = pd.Series(np.arange(4.), index=['a','b','c','d'])
+
+In [118]: obj
+Out[118]:
+a    0.0
+b    1.0
+c    2.0
+d    3.0
+dtype: float64
+
+In [119]: obj['b']
+Out[119]: 1.0
+
+In [120]: obj[2:4]
+Out[120]:
+c    2.0
+d    3.0
+dtype: float64
+
+In [121]: obj[['b','a','d']]
+Out[121]:
+b    1.0
+a    0.0
+d    3.0
+dtype: float64
+
+In [122]: obj[[1,3]]
+Out[122]:
+b    1.0
+d    3.0
+dtype: float64
+
+In [123]: obj[obj < 2]
+Out[123]:
+a    0.0
+b    1.0
+dtype: float64
+
+In [124]: obj['b':'c']
+Out[124]:
+b    1.0
+c    2.0
+dtype: float64
+
+In [125]: obj['b','c'] = 5
+
+In [126]: obj
+Out[126]:
+a    0.0
+b    5.0
+c    5.0
+d    3.0
+dtype: float64
+
+In [127]: data = pd.DataFrame(np.arange(16).reshape((4,4)), index = ['Ohio', 'Colorado','Utah','New York'], columns = [
+     ...: 'one','two', 'three','four'])
+
+In [128]: data
+Out[128]:
+          one  two  three  four
+Ohio        0    1      2     3
+Colorado    4    5      6     7
+Utah        8    9     10    11
+New York   12   13     14    15
+
+In [129]: data['two']
+Out[129]:
+Ohio         1
+Colorado     5
+Utah         9
+New York    13
+Name: two, dtype: int32
+
+In [130]: data['three', 'one']
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+~\anaconda3\lib\site-packages\pandas\core\indexes\base.py in get_loc(self, key, method, tolerance)
+   2645             try:
+-> 2646                 return self._engine.get_loc(key)
+   2647             except KeyError:
+
+pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: ('three', 'one')
+
+During handling of the above exception, another exception occurred:
+
+KeyError                                  Traceback (most recent call last)
+<ipython-input-130-2aa13187eb44> in <module>
+----> 1 data['three', 'one']
+
+~\anaconda3\lib\site-packages\pandas\core\frame.py in __getitem__(self, key)
+   2798             if self.columns.nlevels > 1:
+   2799                 return self._getitem_multilevel(key)
+-> 2800             indexer = self.columns.get_loc(key)
+   2801             if is_integer(indexer):
+   2802                 indexer = [indexer]
+
+~\anaconda3\lib\site-packages\pandas\core\indexes\base.py in get_loc(self, key, method, tolerance)
+   2646                 return self._engine.get_loc(key)
+   2647             except KeyError:
+-> 2648                 return self._engine.get_loc(self._maybe_cast_indexer(key))
+   2649         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
+   2650         if indexer.ndim > 1 or indexer.size > 1:
+
+pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: ('three', 'one')
+
+In [131]: data[['three', 'one']]
+Out[131]:
+          three  one
+Ohio          2    0
+Colorado      6    4
+Utah         10    8
+New York     14   12
+
+In [132]: data[:2]
+Out[132]:
+          one  two  three  four
+Ohio        0    1      2     3
+Colorado    4    5      6     7
+
+In [133]: data[data['three']] > 5
+     ...:
+     ...:
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+<ipython-input-133-31a673a2fc15> in <module>
+----> 1 data[data['three']] > 5
+      2
+
+~\anaconda3\lib\site-packages\pandas\core\frame.py in __getitem__(self, key)
+   2804             if is_iterator(key):
+   2805                 key = list(key)
+-> 2806             indexer = self.loc._get_listlike_indexer(key, axis=1, raise_missing=True)[1]
+   2807
+   2808         # take() does not accept boolean indexers
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _get_listlike_indexer(self, key, axis, raise_missing)
+   1550
+   1551         self._validate_read_indexer(
+-> 1552             keyarr, indexer, o._get_axis_number(axis), raise_missing=raise_missing
+   1553         )
+   1554         return keyarr, indexer
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _validate_read_indexer(self, key, indexer, axis, raise_missing)
+   1637             if missing == len(indexer):
+   1638                 axis_name = self.obj._get_axis_name(axis)
+-> 1639                 raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+   1640
+   1641             # We (temporarily) allow for some missing keys with .loc, except in
+
+KeyError: "None of [Int64Index([2, 6, 10, 14], dtype='int64')] are in the [columns]"
+
+In [134]: data[data['three']] > 5
+     ...:
+     ...:
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+<ipython-input-134-31a673a2fc15> in <module>
+----> 1 data[data['three']] > 5
+      2
+
+~\anaconda3\lib\site-packages\pandas\core\frame.py in __getitem__(self, key)
+   2804             if is_iterator(key):
+   2805                 key = list(key)
+-> 2806             indexer = self.loc._get_listlike_indexer(key, axis=1, raise_missing=True)[1]
+   2807
+   2808         # take() does not accept boolean indexers
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _get_listlike_indexer(self, key, axis, raise_missing)
+   1550
+   1551         self._validate_read_indexer(
+-> 1552             keyarr, indexer, o._get_axis_number(axis), raise_missing=raise_missing
+   1553         )
+   1554         return keyarr, indexer
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _validate_read_indexer(self, key, indexer, axis, raise_missing)
+   1637             if missing == len(indexer):
+   1638                 axis_name = self.obj._get_axis_name(axis)
+-> 1639                 raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+   1640
+   1641             # We (temporarily) allow for some missing keys with .loc, except in
+
+KeyError: "None of [Int64Index([2, 6, 10, 14], dtype='int64')] are in the [columns]"
+
+In [135]: data[data['three']] > 5
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+<ipython-input-135-24f593adfb54> in <module>
+----> 1 data[data['three']] > 5
+
+~\anaconda3\lib\site-packages\pandas\core\frame.py in __getitem__(self, key)
+   2804             if is_iterator(key):
+   2805                 key = list(key)
+-> 2806             indexer = self.loc._get_listlike_indexer(key, axis=1, raise_missing=True)[1]
+   2807
+   2808         # take() does not accept boolean indexers
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _get_listlike_indexer(self, key, axis, raise_missing)
+   1550
+   1551         self._validate_read_indexer(
+-> 1552             keyarr, indexer, o._get_axis_number(axis), raise_missing=raise_missing
+   1553         )
+   1554         return keyarr, indexer
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _validate_read_indexer(self, key, indexer, axis, raise_missing)
+   1637             if missing == len(indexer):
+   1638                 axis_name = self.obj._get_axis_name(axis)
+-> 1639                 raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+   1640
+   1641             # We (temporarily) allow for some missing keys with .loc, except in
+
+KeyError: "None of [Int64Index([2, 6, 10, 14], dtype='int64')] are in the [columns]"
+
+In [136]: data[data['three'] > ]
+  File "<ipython-input-136-fdfe42648257>", line 1
+    data[data['three'] > ]
+                         ^
+SyntaxError: invalid syntax
+
+
+In [137]: data[data['three'] > 5 ]
+Out[137]:
+          one  two  three  four
+Colorado    4    5      6     7
+Utah        8    9     10    11
+New York   12   13     14    15
+
+In [138]: data < 5
+Out[138]:
+            one    two  three   four
+Ohio       True   True   True   True
+Colorado   True  False  False  False
+Utah      False  False  False  False
+New York  False  False  False  False
+
+In [139]: data[data < 5 ] = 0
+
+In [140]: data
+Out[140]:
+          one  two  three  four
+Ohio        0    0      0     0
+Colorado    0    5      6     7
+Utah        8    9     10    11
+New York   12   13     14    15
+
+In [141]: # selection with loc and iloc =========================
+
+In [142]: data.loc['colorado', ['two','three']]
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+~\anaconda3\lib\site-packages\pandas\core\indexes\base.py in get_loc(self, key, method, tolerance)
+   2645             try:
+-> 2646                 return self._engine.get_loc(key)
+   2647             except KeyError:
+
+pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: 'colorado'
+
+During handling of the above exception, another exception occurred:
+
+KeyError                                  Traceback (most recent call last)
+<ipython-input-142-af656d280a9a> in <module>
+----> 1 data.loc['colorado', ['two','three']]
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in __getitem__(self, key)
+   1759                 except (KeyError, IndexError, AttributeError):
+   1760                     pass
+-> 1761             return self._getitem_tuple(key)
+   1762         else:
+   1763             # we by definition only have the 0th axis
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _getitem_tuple(self, tup)
+   1269     def _getitem_tuple(self, tup: Tuple):
+   1270         try:
+-> 1271             return self._getitem_lowerdim(tup)
+   1272         except IndexingError:
+   1273             pass
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _getitem_lowerdim(self, tup)
+   1386         for i, key in enumerate(tup):
+   1387             if is_label_like(key) or isinstance(key, tuple):
+-> 1388                 section = self._getitem_axis(key, axis=i)
+   1389
+   1390                 # we have yielded a scalar ?
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _getitem_axis(self, key, axis)
+   1962         # fall thru to straight lookup
+   1963         self._validate_key(key, axis)
+-> 1964         return self._get_label(key, axis=axis)
+   1965
+   1966
+
+~\anaconda3\lib\site-packages\pandas\core\indexing.py in _get_label(self, label, axis)
+    622             raise IndexingError("no slices here, handle elsewhere")
+    623
+--> 624         return self.obj._xs(label, axis=axis)
+    625
+    626     def _get_loc(self, key: int, axis: int):
+
+~\anaconda3\lib\site-packages\pandas\core\generic.py in xs(self, key, axis, level, drop_level)
+   3535             loc, new_index = self.index.get_loc_level(key, drop_level=drop_level)
+   3536         else:
+-> 3537             loc = self.index.get_loc(key)
+   3538
+   3539             if isinstance(loc, np.ndarray):
+
+~\anaconda3\lib\site-packages\pandas\core\indexes\base.py in get_loc(self, key, method, tolerance)
+   2646                 return self._engine.get_loc(key)
+   2647             except KeyError:
+-> 2648                 return self._engine.get_loc(self._maybe_cast_indexer(key))
+   2649         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
+   2650         if indexer.ndim > 1 or indexer.size > 1:
+
+pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: 'colorado'
+
+In [143]: data
+Out[143]:
+          one  two  three  four
+Ohio        0    0      0     0
+Colorado    0    5      6     7
+Utah        8    9     10    11
+New York   12   13     14    15
+
+In [144]: data.loc['Colorado', ['two','three']]
+Out[144]:
+two      5
+three    6
+Name: Colorado, dtype: int32
+
+In [145]: data.iloc[2, [3,0,1]]
+Out[145]:
+four    11
+one      8
+two      9
+Name: Utah, dtype: int32
+
+In [146]: data.iloc[2]
+Out[146]:
+one       8
+two       9
+three    10
+four     11
+Name: Utah, dtype: int32
+
+In [147]: data.iloc[[1,2],[3,0,1]]
+Out[147]:
+          four  one  two
+Colorado     7    0    5
+Utah        11    8    9
+
+In [148]: data.loc[:'Utah', 'two']
+Out[148]:
+Ohio        0
+Colorado    5
+Utah        9
+Name: two, dtype: int32
+
+In [149]: data.iloc[:,:3] [data.three > 0]
+Out[149]:
+          one  two  three
+Colorado    0    5      6
+Utah        8    9     10
+New York   12   13     14
+
+In [150]: #Integer Indexes ==============================================================
+
+In [151]: ser = pd.Series(np.arange(3.))
+
+In [152]: ser
+Out[152]:
+0    0.0
+1    1.0
+2    2.0
+dtype: float64
+
+In [153]: # Aritmetic and Data Alignment ==================================
+
+In [154]: s1 = pd.Series([7.3, -2.5, 3.4, 1.5], index=['a', 'c', 'd', 'e'])
+
+In [155]: s2 = pd.Series([-2.1, 3.6, -1.5, 4, 3.1], index=['a', 'c', 'e', 'f', 'g'])
+
+In [156]: s1
+Out[156]:
+a    7.3
+c   -2.5
+d    3.4
+e    1.5
+dtype: float64
+
+In [157]: s2
+Out[157]:
+a   -2.1
+c    3.6
+e   -1.5
+f    4.0
+g    3.1
+dtype: float64
+
+In [158]: s1 + s2
+Out[158]:
+a    5.2
+c    1.1
+d    NaN
+e    0.0
+f    NaN
+g    NaN
+dtype: float64
+
+In [159]: # Rest of exercises pending  for this Unit =========================================
+
+In [160]:
+
+In [160]: # Function Application and Mapping
+
+In [161]: frame = DataFrame(np.random.rand(4,3), columns=list('bde'), index=['Utah','Ohio','Texas','Oregon'])
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-161-7919067ebe20> in <module>
+----> 1 frame = DataFrame(np.random.rand(4,3), columns=list('bde'), index=['Utah','Ohio','Texas','Oregon'])
+
+NameError: name 'DataFrame' is not defined
+
+In [162]: frame = pd.DataFrame(np.random.rand(4,3), columns=list('bde'), index=['Utah','Ohio','Texas','Oregon'])
+
+In [163]: frame
+Out[163]:
+               b         d         e
+Utah    0.562181  0.337043  0.904877
+Ohio    0.704170  0.941372  0.187374
+Texas   0.310042  0.263127  0.155418
+Oregon  0.190334  0.084968  0.348400
+
+In [164]: np.abs(frame)
+Out[164]:
+               b         d         e
+Utah    0.562181  0.337043  0.904877
+Ohio    0.704170  0.941372  0.187374
+Texas   0.310042  0.263127  0.155418
+Oregon  0.190334  0.084968  0.348400
+
+In [165]: f=lambda x: x.max()-x.min()
+
+In [166]: frame.apply(f)
+Out[166]:
+b    0.513836
+d    0.856404
+e    0.749459
+dtype: float64
+
+In [167]: frame.apply(f, axis='columns')
+Out[167]:
+Utah      0.567834
+Ohio      0.753998
+Texas     0.154623
+Oregon    0.263432
+dtype: float64
+
+In [168]: def f(x):
+     ...:     pd.Series([x.min(), x.max()], index=['min', 'max'])
+     ...:
+
+In [169]: frame.apply(f)
+Out[169]:
+b    None
+d    None
+e    None
+dtype: object
+
+In [170]: def f(x):
+     ...:    return  pd.Series([x.min(), x.max()], index=['min', 'max'])
+     ...:
+
+In [171]: frame.apply(f)
+Out[171]:
+            b         d         e
+min  0.190334  0.084968  0.155418
+max  0.704170  0.941372  0.904877
+
+In [172]: format = lambda x: '%.2f' %x
+
+In [173]: frame.applymap(format)
+Out[173]:
+           b     d     e
+Utah    0.56  0.34  0.90
+Ohio    0.70  0.94  0.19
+Texas   0.31  0.26  0.16
+Oregon  0.19  0.08  0.35
+
+In [174]: frame['e'].map(format)
+     ...:
+Out[174]:
+Utah      0.90
+Ohio      0.19
+Texas     0.16
+Oregon    0.35
+Name: e, dtype: object
+
+In [175]: # Sorting and Ranking
+
+In [176]: obj = pd.Series(range(4), index=['d','a','b','c'])
+
+In [177]: obj.sort_index()
+Out[177]:
+a    1
+b    2
+c    3
+d    0
+dtype: int64
+
+In [178]: frame = pd.DataFrame(np.arange(8).reshape((2,4)), index=['three','one'], columns=['d','a','b','c'])
+
+In [179]: frame
+Out[179]:
+       d  a  b  c
+three  0  1  2  3
+one    4  5  6  7
+
+In [180]: frame.sort_index()
+Out[180]:
+       d  a  b  c
+one    4  5  6  7
+three  0  1  2  3
+
+In [181]: frame.sort_index(axis=1)
+Out[181]:
+       a  b  c  d
+three  1  2  3  0
+one    5  6  7  4
+
+In [182]: frame.sort_index(axis=1,ascending=false)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-182-63d34e40001b> in <module>
+----> 1 frame.sort_index(axis=1,ascending=false)
+
+NameError: name 'false' is not defined
+
+In [183]: frame.sort_index(axis=1,ascending=False)
+Out[183]:
+       d  c  b  a
+three  0  3  2  1
+one    4  7  6  5
+
+In [184]: obj = pd.Series([4,7,-3,2])
+
+In [185]: obj
+Out[185]:
+0    4
+1    7
+2   -3
+3    2
+dtype: int64
+
+In [186]: obj.sort_values()
+Out[186]:
+2   -3
+3    2
+0    4
+1    7
+dtype: int64
+
+In [187]: obj = pd.Series([4, np.nan, 7, np.nan, -3, 2])
+
+In [188]: obj.sort_values()
+Out[188]:
+4   -3.0
+5    2.0
+0    4.0
+2    7.0
+1    NaN
+3    NaN
+dtype: float64
+
+In [189]: frame=pd.DataFrame({'b':[4,7,-3,2], 'a':[0,1,0,1]})
+
+In [190]: frame
+Out[190]:
+   b  a
+0  4  0
+1  7  1
+2 -3  0
+3  2  1
+
+In [191]: frame.sort_values(by='b')
+Out[191]:
+   b  a
+2 -3  0
+3  2  1
+0  4  0
+1  7  1
+
+In [192]: frame.sort_values(by=['a','b'])
+Out[192]:
+   b  a
+2 -3  0
+0  4  0
+3  2  1
+1  7  1
+
+In [193]: obj=pd.Series([7,-5,7,4,2,0,4])
+
+In [194]: obj.rank()
+Out[194]:
+0    6.5
+1    1.0
+2    6.5
+3    4.5
+4    3.0
+5    2.0
+6    4.5
+dtype: float64
+
+In [195]: obj
+Out[195]:
+0    7
+1   -5
+2    7
+3    4
+4    2
+5    0
+6    4
+dtype: int64
+
+In [196]: obj.rank(method='first')
+Out[196]:
+0    6.0
+1    1.0
+2    7.0
+3    4.0
+4    3.0
+5    2.0
+6    5.0
+dtype: float64
+
+In [197]: # Summarizing and computing descriptive statistics ===========================
+
+In [198]: df = pd.DataFrame([[1.4, np.nan], [7.1, -4.5], [np.nan, np.nan], [0.75, -1.3]], index=['a','b','c','d'], colu
+     ...: mns=['one', 'two'])
+
+In [199]: df
+Out[199]:
+    one  two
+a  1.40  NaN
+b  7.10 -4.5
+c   NaN  NaN
+d  0.75 -1.3
+
+In [200]: df.sum()
+Out[200]:
+one    9.25
+two   -5.80
+dtype: float64
+
+In [201]: df.sum(axis='columns')
+Out[201]:
+a    1.40
+b    2.60
+c    0.00
+d   -0.55
+dtype: float64
+
+In [202]: df.mean(axis='columns',skipna=False)
+Out[202]:
+a      NaN
+b    1.300
+c      NaN
+d   -0.275
+dtype: float64
+
+In [203]:       
