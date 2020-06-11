@@ -1,0 +1,466 @@
+Microsoft Windows [Versión 10.0.18362.720]
+(c) 2019 Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\melendez>cd C:\Users\melendez\anaconda3\
+
+C:\Users\melendez\anaconda3>python
+Python 3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)] :: Anaconda, Inc. on win32
+
+Warning:
+This Python interpreter is in a conda environment, but the environment has
+not been activated.  Libraries may fail to load.  To activate this environment
+please see https://conda.io/activation
+
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+
+C:\Users\melendez\anaconda3>python
+Python 3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)] :: Anaconda, Inc. on win32
+
+Warning:
+This Python interpreter is in a conda environment, but the environment has
+not been activated.  Libraries may fail to load.  To activate this environment
+please see https://conda.io/activation
+
+Type "help", "copyright", "credits" or "license" for more information.
+>>> ipython
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'ipython' is not defined
+>>>
+>>> x=2
+>>> print(x)
+2
+>>> exit()
+
+C:\Users\melendez\anaconda3>jupyter notebook
+"jupyter" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
+
+C:\Users\melendez\anaconda3>ipython
+"ipython" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
+
+C:\Users\melendez\anaconda3>conda
+usage: conda-script.py [-h] [-V] command ...
+
+conda is a tool for managing and deploying applications, environments and packages.
+
+Options:
+
+positional arguments:
+  command
+    clean        Remove unused packages and caches.
+    config       Modify configuration values in .condarc. This is modeled
+                 after the git config command. Writes to the user .condarc
+                 file (C:\Users\melendez\.condarc) by default.
+    create       Create a new conda environment from a list of specified
+                 packages.
+    help         Displays a list of available conda commands and their help
+                 strings.
+    info         Display information about current conda install.
+    init         Initialize conda for shell interaction. [Experimental]
+    install      Installs a list of packages into a specified conda
+                 environment.
+    list         List linked packages in a conda environment.
+    package      Low-level conda package utility. (EXPERIMENTAL)
+    remove       Remove a list of packages from a specified conda environment.
+    uninstall    Alias for conda remove.
+    run          Run an executable in a conda environment. [Experimental]
+    search       Search for packages and display associated information. The
+                 input is a MatchSpec, a query language for conda packages.
+                 See examples below.
+    update       Updates conda packages to the latest compatible version.
+    upgrade      Alias for conda update.
+
+optional arguments:
+  -h, --help     Show this help message and exit.
+  -V, --version  Show the conda version number and exit.
+
+conda commands available from other packages:
+  build
+  convert
+  debug
+  develop
+  env
+  index
+  inspect
+  metapackage
+  render
+  server
+  skeleton
+  verify
+
+C:\Users\melendez\anaconda3>conda base
+
+CommandNotFoundError: No command 'conda base'.
+
+
+C:\Users\melendez\anaconda3>conda
+usage: conda-script.py [-h] [-V] command ...
+
+conda is a tool for managing and deploying applications, environments and packages.
+
+Options:
+
+positional arguments:
+  command
+    clean        Remove unused packages and caches.
+    config       Modify configuration values in .condarc. This is modeled
+                 after the git config command. Writes to the user .condarc
+                 file (C:\Users\melendez\.condarc) by default.
+    create       Create a new conda environment from a list of specified
+                 packages.
+    help         Displays a list of available conda commands and their help
+                 strings.
+    info         Display information about current conda install.
+    init         Initialize conda for shell interaction. [Experimental]
+    install      Installs a list of packages into a specified conda
+                 environment.
+    list         List linked packages in a conda environment.
+    package      Low-level conda package utility. (EXPERIMENTAL)
+    remove       Remove a list of packages from a specified conda environment.
+    uninstall    Alias for conda remove.
+    run          Run an executable in a conda environment. [Experimental]
+    search       Search for packages and display associated information. The
+                 input is a MatchSpec, a query language for conda packages.
+                 See examples below.
+    update       Updates conda packages to the latest compatible version.
+    upgrade      Alias for conda update.
+
+optional arguments:
+  -h, --help     Show this help message and exit.
+  -V, --version  Show the conda version number and exit.
+
+conda commands available from other packages:
+  build
+  convert
+  debug
+  develop
+  env
+  index
+  inspect
+  metapackage
+  render
+  server
+  skeleton
+  verify
+
+C:\Users\melendez\anaconda3>cd Scripts
+
+C:\Users\melendez\anaconda3\Scripts>conda
+usage: conda-script.py [-h] [-V] command ...
+
+conda is a tool for managing and deploying applications, environments and packages.
+
+Options:
+
+positional arguments:
+  command
+    clean        Remove unused packages and caches.
+    config       Modify configuration values in .condarc. This is modeled
+                 after the git config command. Writes to the user .condarc
+                 file (C:\Users\melendez\.condarc) by default.
+    create       Create a new conda environment from a list of specified
+                 packages.
+    help         Displays a list of available conda commands and their help
+                 strings.
+    info         Display information about current conda install.
+    init         Initialize conda for shell interaction. [Experimental]
+    install      Installs a list of packages into a specified conda
+                 environment.
+    list         List linked packages in a conda environment.
+    package      Low-level conda package utility. (EXPERIMENTAL)
+    remove       Remove a list of packages from a specified conda environment.
+    uninstall    Alias for conda remove.
+    run          Run an executable in a conda environment. [Experimental]
+    search       Search for packages and display associated information. The
+                 input is a MatchSpec, a query language for conda packages.
+                 See examples below.
+    update       Updates conda packages to the latest compatible version.
+    upgrade      Alias for conda update.
+
+optional arguments:
+  -h, --help     Show this help message and exit.
+  -V, --version  Show the conda version number and exit.
+
+conda commands available from other packages:
+  build
+  convert
+  debug
+  develop
+  env
+  index
+  inspect
+  metapackage
+  render
+  server
+  skeleton
+  verify
+
+C:\Users\melendez\anaconda3\Scripts>conda env
+usage: conda-env-script.py [-h] {create,export,list,remove,update,config} ...
+
+positional arguments:
+  {create,export,list,remove,update,config}
+    create              Create an environment based on an environment file
+    export              Export a given environment
+    list                List the Conda environments
+    remove              Remove an environment
+    update              Update the current environment based on environment
+                        file
+    config              Configure a conda environment
+
+optional arguments:
+  -h, --help            Show this help message and exit.
+
+conda commands available from other packages:
+  build
+  convert
+  debug
+  develop
+  env
+  index
+  inspect
+  metapackage
+  render
+  server
+  skeleton
+  verify
+
+C:\Users\melendez\anaconda3\Scripts>ipython
+C:\Users\melendez\anaconda3\lib\site-packages\IPython\core\history.py:226: UserWarning: IPython History requires SQLite, your history will not be saved
+  warn("IPython History requires SQLite, your history will not be saved")
+Python 3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.12.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import datatime
+---------------------------------------------------------------------------
+ModuleNotFoundError                       Traceback (most recent call last)
+<ipython-input-1-347fcf16cf34> in <module>
+----> 1 import datatime
+
+ModuleNotFoundError: No module named 'datatime'
+
+In [2]: import datetime
+
+In [3]: c="""
+   ...: This is a longer string that
+   ...: spans multiple lines
+   ...: """
+
+In [4]: c.count('\n')
+Out[4]: 3
+
+In [5]: s='python'
+
+In [6]: s
+Out[6]: 'python'
+
+In [7]: list(s)
+Out[7]: ['p', 'y', 't', 'h', 'o', 'n']
+
+In [8]: s[:3]
+Out[8]: 'pyt'
+
+In [9]: s=r'this\has\no'
+
+In [10]: s
+Out[10]: 'this\\has\\no'
+
+In [11]: template = '{0:.2f} {1:s} are worth US${2:d}'
+
+In [12]: template.format(4.5560, 'Argentine Pesos', 1)
+Out[12]: '4.56 Argentine Pesos are worth US$1'
+
+In [13]: def add_and_maybe_multiply(a, b, c=None):
+    ...:     result = a + b
+    ...:     if c is not None:
+    ...:         result = result * c
+    ...:
+
+In [14]: return result
+  File "<ipython-input-14-fd6367e7bab1>", line 1
+    return result
+                 ^
+SyntaxError: 'return' outside function
+
+
+In [15]: dt = datetime(2011, 10, 29, 20, 30, 21)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-15-8938a3367fd6> in <module>
+----> 1 dt = datetime(2011, 10, 29, 20, 30, 21)
+
+TypeError: 'module' object is not callable
+
+In [16]: from datetime import datetime, date, time
+
+In [17]: dt = datetime(2011, 10, 29, 20, 30, 21)
+
+In [18]: dt.day
+Out[18]: 29
+
+In [19]: dt.minute
+Out[19]: 30
+
+In [20]: dt.date()
+Out[20]: datetime.date(2011, 10, 29)
+
+In [21]: dt.time()
+Out[21]: datetime.time(20, 30, 21)
+
+In [22]: dt.strftime('%m%d%Y %H%M')
+Out[22]: '10292011 2030'
+
+In [23]: datetime.strptime('20091031', '%Y%m%d')
+Out[23]: datetime.datetime(2009, 10, 31, 0, 0)
+
+In [24]: dt.replace(minute=0, second=0)
+Out[24]: datetime.datetime(2011, 10, 29, 20, 0)
+
+In [25]: dt2 = datetime(2011, 11, 15, 22, 30)
+
+In [26]: delta = dt2 - dt
+
+In [27]: delta
+Out[27]: datetime.timedelta(days=17, seconds=7179)
+
+In [28]: dt
+Out[28]: datetime.datetime(2011, 10, 29, 20, 30, 21)
+
+In [29]: dt + delta
+Out[29]: datetime.datetime(2011, 11, 15, 22, 30)
+
+In [30]: sequence = [1, 2, None, 4, None, 5]
+
+In [31]: total = 0
+
+In [32]: for value in sequence:
+    ...:     if value is None:
+    ...:         continue
+    ...:     total += value
+    ...:
+
+In [33]: print(total)
+12
+
+In [34]: sequence = [1, 2, 0, 4, 6, 5, 2, 1]
+
+In [35]: total_until_5 = 0
+
+In [36]: for value in sequence:
+    ...:     if value ==  5:
+    ...:         break
+    ...:     total_until_5 += value
+    ...:
+
+In [37]: total_until_5
+Out[37]: 13
+
+In [38]: for i in range(4):
+    ...:     for j in range(4):
+    ...:         if j > i:
+    ...:             break
+    ...:         print((i, j))
+    ...:
+(0, 0)
+(1, 0)
+(1, 1)
+(2, 0)
+(2, 1)
+(2, 2)
+(3, 0)
+(3, 1)
+(3, 2)
+(3, 3)
+
+In [39]: x = 256
+
+In [40]: total = 0
+
+In [41]: while x > 0:
+    ...:     if total > 500:
+    ...:         break
+    ...:     total += x
+    ...:     x = x // 2
+    ...:
+
+In [42]: total
+Out[42]: 504
+
+In [43]: x
+Out[43]: 4
+
+In [44]: x = 100
+
+In [45]: x = x // 2
+
+In [46]: x
+Out[46]: 50
+
+In [47]: x = 7 / 2
+
+In [48]: x
+Out[48]: 3.5
+
+In [49]: x = 7 // 2
+
+In [50]: x
+Out[50]: 3
+
+In [51]: if x < 0
+  File "<ipython-input-51-2f92faf7cec4>", line 1
+    if x < 0
+            ^
+SyntaxError: invalid syntax
+
+
+In [52]: if x < 0:
+    ...:     print('negative!')
+    ...: elif x == 0:
+    ...:     # TODO: Put something smart here
+    ...:     pass
+    ...: else
+  File "<ipython-input-52-0d62361f8b55>", line 6
+    else
+        ^
+SyntaxError: invalid syntax
+
+
+In [53]: if x < 0:
+    ...:     print('negative')
+    ...: elif x == 0:
+    ...:     # TODO: Put something smart here
+    ...:     pass
+    ...: else:
+    ...:     print('positive!')
+    ...:
+positive!
+
+In [54]: range(10)
+Out[54]: range(0, 10)
+
+In [55]: list(range(10))
+Out[55]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+In [56]: list(range(0, 20, 2))
+Out[56]: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+In [57]: list(range(5, 0, -1))
+Out[57]: [5, 4, 3, 2, 1]
+
+In [58]: seq = [1, 2, 3, 4]
+
+In [59]: for i in range(len(seq)):
+    ...:     val = seq[i]
+    ...:
+
+In [60]: val
+Out[60]: 4
+
+In [61]: x = 5
+
+In [62]: 'Non-negative' if x >= 0 else 'Negative'
+Out[62]: 'Non-negative'
